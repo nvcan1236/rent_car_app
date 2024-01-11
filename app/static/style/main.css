@@ -1,0 +1,127 @@
+.navbar.color {
+    background-color: #ccc;
+}
+.welcome-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.welcome h2 {
+    margin: 32px 0;
+    text-transform: uppercase;
+}
+.welcome .row{
+    height: 100vh;
+}
+
+.welcome p {
+    padding-top: 20px;
+}
+
+.welcome .contact-btn {
+    max-width: 200px;
+    padding: 12px 26px;
+    border-radius: 999px;
+    background-color: #ccc;
+    margin-bottom: 24px;
+    font-weight: 600;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.welcome-image {
+    height: 100%;
+}
+
+.welcome-image img  {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*why chose us*/
+.why-us {
+    margin-top:80px;
+}
+
+.why-us .reason {
+    padding: 24px 50px;
+    font-size: 16px;
+}
+
+.why-us .reason span {
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.why-us .reason strong{
+    font-size: 20px;
+}
+
+/*car-list*/
+.car-list .title{
+    margin-bottom: 32px;
+
+}
+
+.car-list .row {
+}
+
+.car-list .car {
+    padding: 16px;
+    height: 100%;
+    align-self: stretch;
+}
+
+
+
+.car-list .car-wrapper {
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 0 10px 4px #ddd;
+    transition: all 0.3s ease;
+}
+.car-wrapper:hover {
+    box-shadow: 0 0 10px 6px #ccc;
+    transform: translateY(-4px);
+}
+
+.car-image {
+    height: 200px;
+}
+.car-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.car-info {
+    padding: 16px 20px;
+}
+
+.car .car-name {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.car-info .label {
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+.car .car-price {
+    font-size: 20px;
+}
+
+.car .action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.car .book-btn {
+    padding: 6px 20px;
+    border-radius: 999px;
+}
