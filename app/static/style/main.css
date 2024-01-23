@@ -1,16 +1,66 @@
-.navbar.color {
-    background-color: #ccc;
+.navbar.fixed, .navbar.fixed-no-change {
+    background-color: var(--red);
+    color: var(--white);
+    transition: all ease 0.3s;
 }
+
+.navbar .nav-link {
+    color: var(--white);
+    font-size: 16px;
+}
+
+.brand-name {
+    color: var(--red);
+    font-weight: 700;
+}
+
+.navbar-brand {
+    color: var(--red);
+    font-size: 20px;
+    font-weight: 700;
+}
+.navbar.fixed-no-change .nav-link,
+.navbar.fixed-no-change .navbar-brand,
+.navbar.fixed .nav-link,
+.navbar.fixed .navbar-brand {
+    color: var(--white);
+}
+
+.welcome {
+    position: relative;
+    height: min(100vh, 800px);
+}
+
 .welcome-text {
+    width:100%;
+    background-image: linear-gradient(to right, var(--black) 52%, transparent);
+    color: var(--white);
+    position: relative;
+    z-index: 1;
+    height: 100%;
+}
+
+.welcome-wrapper {
+    height: 100%;
     display: flex;
     flex-direction: column;
+    width: min(700px, 100%);
     justify-content: space-between;
 }
+
+.welcome-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
 .welcome h2 {
     margin: 32px 0;
     text-transform: uppercase;
 }
-.welcome .row{
+
+.welcome .row {
     height: 100vh;
 }
 
@@ -22,7 +72,8 @@
     max-width: 200px;
     padding: 12px 26px;
     border-radius: 999px;
-    background-color: #ccc;
+    background-color: var(--red);
+    color: var(--white);
     margin-bottom: 24px;
     font-weight: 600;
     font-size: 18px;
@@ -31,11 +82,7 @@
     align-items: center;
 }
 
-.welcome-image {
-    height: 100%;
-}
-
-.welcome-image img  {
+.welcome-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -43,7 +90,7 @@
 
 /*why chose us*/
 .why-us {
-    margin-top:80px;
+    margin-top: 80px;
 }
 
 .why-us .reason {
@@ -54,17 +101,14 @@
 .why-us .reason span {
     font-size: 50px;
     font-weight: 700;
+    color: var(--red);
 }
 
-.why-us .reason strong{
+.why-us .reason strong {
     font-size: 20px;
 }
 
 /*car-list*/
-.car-list .title{
-    margin-bottom: 32px;
-
-}
 
 .car-list .row {
 }
@@ -76,13 +120,14 @@
 }
 
 
-
 .car-list .car-wrapper {
     border-radius: 6px;
+    background-color:#fdfdfd;
     overflow: hidden;
     box-shadow: 0 0 10px 4px #ddd;
     transition: all 0.3s ease;
 }
+
 .car-wrapper:hover {
     box-shadow: 0 0 10px 6px #ccc;
     transform: translateY(-4px);
@@ -91,7 +136,8 @@
 .car-image {
     height: 200px;
 }
-.car-image img{
+
+.car-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -102,8 +148,10 @@
 }
 
 .car .car-name {
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 22px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
 }
 
 .car-info .label {
@@ -112,7 +160,9 @@
 }
 
 .car .car-price {
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 600;
+
 }
 
 .car .action {
@@ -122,6 +172,151 @@
 }
 
 .car .book-btn {
-    padding: 6px 20px;
-    border-radius: 999px;
+    padding: 8px 32px;
+    border-radius: 6px;
+}
+
+/*procedure*/
+.step {
+    position: relative;
+    padding: 16px;
+}
+.step + .step:before {
+    position: absolute;
+    content: '';
+    opacity: 0.3;
+    width: 60px;
+    height: 300px;
+    left: -20px;
+    background-image: url('../images/Picture1.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.day-advise {
+}
+
+.day-advise ul {
+    margin: 0;
+    padding: 0 30px;
+}
+
+/*quick-contact*/
+.quick-contact {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transform: translateY(150%);
+    transition: all ease 1s;
+}
+
+.quick-contact.show {
+    transform: translateY(0%);
+}
+
+.quick-contact img {
+    width: 40px;
+    height: 40px;
+}
+/*foooter*/
+footer {
+    margin-top: 80px;
+    background-color: var(--black);
+    color: var(--white);
+    font-size: 14px !important;
+}
+
+/* car-list */
+.search-filter {
+    margin-top: 60px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+}
+
+.search-filter .search form {
+    border: 1px solid var(--red);
+    border-radius: 8px;
+    width: 500px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 8px;
+}
+
+
+.search-filter input {
+    border: none;
+    outline: none;
+    padding: 10px 16px;
+    background-color: var(--white);
+    color: #333;
+    flex: 1;
+}
+
+.search-filter .search-btn {
+    background-color: var(--black);
+    color: var(--white);
+    border-radius: 6px;
+}
+
+.filter {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.filter label {
+    font-weight: 600;
+}
+
+.filter>div {
+    display: flex;
+    align-items: center;
+}
+
+.filter-brand, .filter-type {
+    display: flex;
+    gap: 12px;
+}
+
+
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-select {
+    border: 1px solid var(--red);
+    padding: 8px 16px;
+    border-radius: 6px;
+}
+
+.dropdown-select span {
+    pointer-events: none;
+}
+
+.dropdown-list {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    z-index: 2;
+    background-color: var(--white);
+    border: 1px solid var(--black);
+    border-radius: 6px;
+    width: 200px;
+    overflow: hidden;
+}
+
+.dropdown-item {
+    padding: 8px 20px;
+    transition: all ease 0.3s;
+}
+
+.dropdown-item:hover {
+    background-color: #ccc;
 }

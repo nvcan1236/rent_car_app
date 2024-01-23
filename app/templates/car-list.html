@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <title>Vũ car</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='/style/base.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='/style/main.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='/style/responsive.css')}}" rel="stylesheet">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-sm fixed-top px-md-5 px-xs-3 fixed-no-change" id="nav-bar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"><strong>Vũ car</strong></a>
+            <button class="navbar-toggler" data-bs-target="#collapsibleNavbar" data-bs-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#car-list">Bảng giá thuê</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#procedure"
+                           role="button">Quy trình- Thủ tục</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#procedure">Quy trình tư vấn xe và cọc giữ xe</a></li>
+                            <li><a class="dropdown-item" href="#procedure">Thủ tục làm hợp đồng và nhận xe</a></li>
+                            <li><a class="dropdown-item" href="#procedure">Thủ tục kết thúc hợp đồng và trả xe</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Liên hệ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+
+    <section class="car-list container" id="car-list">
+        <h3 class="title text-center ">Bảng giá cho thuê xe</h3>
+        <div class=" search-filter">
+            <div class="search">
+                <form action="">
+                    <input id="" name="" placeholder="Nhập tên xe cần tìm..." type="text">
+                    <button class="btn search-btn">Tìm kiếm</button>
+                </form>
+            </div>
+            <div class="filter">
+                <div class="filter-brand">
+                    <label for="">Lọc theo hãng</label>
+                    <div class="dropdown" id="filter-brand">
+                        <div class="dropdown-select" onclick="showList('filter-brand')">
+                            <span class="dropdown-value">Tất cả</span>
+                            <span>
+                            <svg
+                                    fill="none"
+                                    stroke="currentColor"
+                                    style="width: 20px; height: 20px"
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                            >
+                            <path
+                                    d="M19 9l-7 7-7-7"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                            />
+                          </svg>
+                        </span>
+                        </div>
+                        <div class="dropdown-list hide">
+                            <div class="dropdown-item">Mazda</div>
+                            <div class="dropdown-item">Honda</div>
+                            <div class="dropdown-item">Mercedes</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-type">
+                    <label for="">Lọc theo chổ ngồi</label>
+                    <div class="dropdown" id="filter-type">
+                        <div class="dropdown-select" onclick="showList('filter-type')">
+                            <span class="dropdown-value">Tất cả</span>
+                            <span>
+                          <svg
+                                  fill="none"
+                                  stroke="currentColor"
+                                  style="width: 20px; height: 20px"
+                                  viewBox="0 0 24 24"
+                                  xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                                    d="M19 9l-7 7-7-7"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                            />
+                          </svg>
+                        </span>
+                        </div>
+                        <div class="dropdown-list hide">
+                            <div class="dropdown-item">Xe 4 chổ</div>
+                            <div class="dropdown-item">Xe 7 chổ</div>
+                            <div class="dropdown-item">Xe 12 chổ</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h3 class="px-3 text-center">{{ type1[0].type.value if type1[0] }}</h3>
+            {% for c in type1 %}
+            <div class="col-12 col-md-6 col-lg-4 car">
+                <div class="car-wrapper">
+                    <div class="car-image">
+                        <img alt=""
+                             src="{{ c.thumbnail or 'https://images.unsplash.com/photo-1514316454349-750a7fd3da3a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}">
+                    </div>
+                    <div class="car-info">
+                        <strong class="car-name">{{ c.name }}</strong>
+                        <div class=""><span class="label">Màu sắc: </span>Đỏ</div>
+                        <div><span class="label">Loại xe: </span>{{  c.type.value }}</div>
+                        <div><span class="label">Hộp số: </span>{{ c.engine.value }}</div>
+                        <div class="action">
+                            <span>
+                                {% if c.price > 0 %}
+                                <span class="car-price">{{c.price|int}}đ</span>/ngày
+                                {% else %}
+                                <span class="car-price">Liên hệ</span>
+                                {% endif %}
+                            </span>
+                            <button class="btn btn--primary book-btn">Đặt xe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <h3 class="px-3 text-center">{{ type2[0].type.value if type2[0] }}</h3>
+            {% for c in type2 %}
+            <div class="col-12 col-md-6 col-lg-4 car">
+                <div class="car-wrapper">
+                    <div class="car-image">
+                        <img alt=""
+                             src="{{ c.thumbnail or 'https://images.unsplash.com/photo-1514316454349-750a7fd3da3a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}">
+                    </div>
+                    <div class="car-info">
+                        <strong class="car-name">{{ c.name }}</strong>
+                        <div class=""><span class="label">Màu sắc: </span>Đỏ</div>
+                        <div><span class="label">Loại xe: </span>{{  c.type.value }}</div>
+                        <div><span class="label">Hộp số: </span>{{ c.engine.value }}</div>
+                        <div class="action">
+                            <span>
+                                {% if c.price > 0 %}
+                                <span class="car-price">{{c.price|int}}đ</span>/ngày
+                                {% else %}
+                                <span class="car-price">Liên hệ</span>
+                                {% endif %}
+                            </span>
+                            <button class="btn btn--primary book-btn">Đặt xe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <h3 class="px-3 text-center">{{ type3[0].type.value if type3[0] }}</h3>
+            {% for c in type3 %}
+            <div class="col-12 col-md-6 col-lg-4 car">
+                <div class="car-wrapper">
+                    <div class="car-image">
+                        <img alt=""
+                             src="{{ c.thumbnail or 'https://images.unsplash.com/photo-1514316454349-750a7fd3da3a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}">
+                    </div>
+                    <div class="car-info">
+                        <strong class="car-name">{{ c.name }}</strong>
+                        <div class=""><span class="label">Màu sắc: </span>Đỏ</div>
+                        <div><span class="label">Loại xe: </span>{{  c.type.value }}</div>
+                        <div><span class="label">Hộp số: </span>{{ c.engine.value }}</div>
+                        <div class="action">
+                            <span>
+                                {% if c.price > 0 %}
+                                <span class="car-price">{{c.price|int}}đ</span>/ngày
+                                {% else %}
+                                <span class="car-price">Liên hệ</span>
+                                {% endif %}
+                            </span>
+                            <button class="btn btn--primary book-btn">Đặt xe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <h3 class="px-3 text-center">{{ type4[0].type.value if type4[0] }}</h3>
+            {% for c in type4 %}
+            <div class="col-12 col-md-6 col-lg-4 car">
+                <div class="car-wrapper">
+                    <div class="car-image">
+                        <img alt=""
+                             src="{{ c.thumbnail or 'https://images.unsplash.com/photo-1514316454349-750a7fd3da3a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}">
+                    </div>
+                    <div class="car-info">
+                        <strong class="car-name">{{ c.name }}</strong>
+                        <div class=""><span class="label">Màu sắc: </span>Đỏ</div>
+                        <div><span class="label">Loại xe: </span>{{  c.type.value }}</div>
+                        <div><span class="label">Hộp số: </span>{{ c.engine.value }}</div>
+                        <div class="action">
+                            <span>
+                                {% if c.price > 0 %}
+                                <span class="car-price">{{c.price|int}}đ</span>/ngày
+                                {% else %}
+                                <span class="car-price">Liên hệ</span>
+                                {% endif %}
+                            </span>
+                            <button class="btn btn--primary book-btn">Đặt xe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    <section class="container procedure" id="procedure">
+        <h3 class="title text-center ">QUY TRÌNH THUÊ XE Ô TÔ TỰ LÁI </h3>
+        <div class="row ">
+            <div class="col-12 col-md-4 step">
+                <h4>1 - Tư vấn xe và cọc giữ xe</h4>
+                <ul class="mt-3">
+                    <li>Sau khi đã tư vấn và Quý khách hàng đã chọn được xe để thuê</li>
+                    <li>Cọc 500.000 vnđ để giữ xe đến ngày thuê.</li>
+                    <li>Chụp hình CCCD/ GPLX gửi trước qua Zalo/ Facebook</li>
+                    <li>Chốt lịch thuê xe lại cho Khách Hàng qua Zalo/ Facebook.</li>
+                </ul>
+            </div>
+            <div class="col-12 col-md-4 step">
+                <h4>2 - Làm hợp đồng và nhận xe</h4>
+                <ul class="mt-3">
+                    <li>Khách Hàng mang theo CCCD và GPLX ô tô để ký hợp đồng thuê xe</li>
+                    <li>Công ty cho thuê xe tạm giữ lại 1 trong các loại giấy tờ CMND/ CCCD/ Hộ khẩu/ Passport/ A1.</li>
+                    <li>Khách hàng cược lại số tiền khi thuê xe là 5 triệu đồng hoặc xe máy của người ký hợp đồng thuê
+                        xe.
+                    </li>
+                    <li>Đối với dòng xe sang cọc 30 triệu đồng</li>
+                </ul>
+            </div>
+            <div class="col-12 col-md-4 step">
+                <h4>3 - Kết thúc hợp đồng và trả xe</h4>
+                <ul class="mt-3">
+                    <li>Khách bàn giao xe và ký hợp đồng kết thúc.</li>
+                    <li>Hoàn trả lại giấy tờ tuỳ thân & Hoàn trả lại tiền đặt cược cho Quý khách.</li>
+                    <li>Đối với trường hợp thuê Tháng/Năm sẽ hoàn trả lại sau 10 ngày sau khi kết thúc hợp đồng thuê
+                        xe
+                    </li>
+                </ul>
+
+            </div>
+            <div class="col-12 mt-4">
+                <h4 class="text-center">Thủ tục tư vấn số ngày thuê xe</h4>
+                <div class=" row day-advise mt-4">
+                    <ul class="col-md-6 col-sm-6 col-12">
+
+                        <li>
+                            Tính một ngày thuê xe là <strong>7h00</strong> sáng đến <strong>22h00</strong> đêm. Hoặc
+                            nhận sớm từ <strong>22h00 đêm hôm trước </strong>đến <strong>22h00 đêm hôm nay</strong>
+                        </li>
+                        <li>
+                            Tính nửa ngày : <strong>7h – 13h và 15h – 22h.</strong>
+                        </li>
+                        <li>
+                            Xe trả sau <strong>22h</strong> của đêm cuối cùng và trả xe trước <strong>7h00</strong> sáng
+                            hôm sau tính phí xe qua đêm
+                            <strong>200.000 VNĐ</strong>
+                        </li>
+                        <li>
+                            Nếu nhận xe sau <strong>22h</strong> chạy trong đêm tính phụ thu strong (Trong TP ĐN) –
+                            <strong>400.000 VNĐ</strong> ( đi
+                            ngoại tỉnh ).
+                        </li>
+                        <li>
+                            Thuê xe từ <strong>15h</strong> trưa hôm nay cho đến <strong>13h</strong> trưa hôm sau phụ
+                            thu qua đêm thêm <strong>200.000 VNĐ</strong>.
+                        </li>
+                        <li>
+                            Ngày <strong>Thứ 7, Chủ nhật</strong> thuê nửa ngày hoặc trả nửa ngày sẽ tính thành <strong>1 </strong>ngày.
+                        </li>
+                        <li>
+                            Phát sinh thêm 1h là <strong>100.000 VNĐ</strong>. Phát sinh trên <strong>2h</strong> tính
+                            tổng 1 ngày thuê xe trong trường hợp trả xe sau <strong>13h</strong>.
+                        </li>
+                        <li>
+                            Tính thuê nửa ngày xe <strong>7h00 – 13h</strong>. Số km sử dụng <strong>125km</strong>.
+                        </li>
+
+                    </ul>
+                    <ul class="col-md-6 col-sm-6 col-12">
+                        <li>
+                            Tính thuê nửa ngày chiều <strong>15h – 21h</strong>. Số km sử dụng <strong>125km</strong>.
+                        </li>
+                        <li>
+                            Tổng 1 ngày thuê xe giới hạn với số kilomet <strong>250km/ ngày.</strong>
+                        </li>
+                        <li>
+                            Vượt ngoài <strong>250km</strong> tính 1km/ <strong>3.000- 5.000 VNĐ</strong>.
+                        </li>
+                        <li>
+                            Thuê xe sau <strong>15h</strong> tính nửa ngày.
+                        </li>
+                        <li>
+                            Trả xe sau <strong>15h</strong> tính tổng 1 ngày.
+                        </li>
+                        <li>
+                            Miễn phí giao hoặc nhận xe 1 chiều, 2 chiều tính phí <strong>100k</strong> ( Giới hạn
+                            <strong>10km</strong> nếu quá 1km tính thêm <strong>10.000 VNĐ</strong>)
+                        </li>
+                        <li>
+                            Phí giao nhận xe Sân bay Phú Bài ( Huế ) : <strong>1.200.000/ 1 lượt</strong>
+                        </li>
+                        <li>
+                            Sân bay : <strong>100.000 VNĐ</strong>.
+                        </li>
+                        <li>
+                            Phí giao nhận xe Sân bay Chu Lai ( Quãng Nam ) : <strong>1.800.000/1 lượt</strong>
+                        </li>
+                        <li>
+                            Phí Hội An : <strong>300.000/ 1 lượt</strong>
+                        </li>
+                        <li>
+                            Phí HOIANA : <strong>350.000/ 1 lượt</strong>
+                        </li>
+                        <li>
+                            Vinpearland Nam Hội An : <strong>400.000/ 1 lượt.</strong>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="contact">
+        <h3 class="title text-center">Liên hệ</h3>
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <h4>Công ty TNHH Dịch vụ An Hoà </h4>
+                <div><span>Địa chỉ: </span> 34 Đ. Vũ Trọng Hoàng, Hoà An, Cẩm Lệ, Đà Nẵng, Việt Nam</div>
+                <div><span>Số điện thoại: </span>
+                    <a class="phone-number" href="">0903651568</a>
+                    <a class="phone-number" href="">0396516516</a>
+                </div>
+                <div><span>Email: </span> <a href="">chothuexeotovuland@gmail.com</a></div>
+                <div><span>Facebook: </span> <a
+                        href="https://www.facebook.com/profile.php?id=100094075363295&mibextid=ZbWKwL">Cho thuê xe tự
+                    lái giá rẻ đà nẵng </a></div>
+
+            </div>
+            <div class="col-12 col-lg-6 map">
+                <iframe allowfullscreen=""
+                        height="300" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5422.3301517199725!2d108.17442176338899!3d16.056851590752355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3142191a9fe1fa21%3A0xcb56f90e4c06d425!2zMzQgxJAuIFbFqSBUcuG7jW5nIEhvw6BuZywgSG_DoCBBbiwgQ-G6qW0gTOG7hywgxJDDoCBO4bq1bmcgNTUwMDAwLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1705656783079!5m2!1svi!2s"
+                        style="border:0;"
+                        width="100%"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <div class="quick-contact">
+        <a class="phone fade-loading" href=""><img alt="" src="{{ url_for( 'static', filename='images/whatsapp.png')}}"></a>
+        <a class="zalo fade-loading" href=""><img alt="" src="{{ url_for( 'static', filename='images/zalo.png')}}"></a>
+        <a class="facebook fade-loading" href=""><img alt=""
+                                                      src="{{ url_for( 'static', filename='images/facebook.png')}}"></a>
+    </div>
+</main>
+<div id="modal">
+    <div class="modal-container">
+
+    </div>
+</div>
+<footer class="py-3">
+    <div class="text-center">Công ty trách nhiệm hữu hạn Dịch vụ Vũ car</div>
+    <div class="text-center">2024 © All rights reserved</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{ url_for( 'static', filename='js/main.js')}}"></script>
+</body>
+</html>

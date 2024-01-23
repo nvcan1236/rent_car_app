@@ -1,0 +1,48 @@
+@media screen and (max-width:600px) {
+    .welcome-text {
+        padding: 250px 16px 0;
+        background-image: linear-gradient(to top, var(--black) 60%, transparent);
+    }
+
+    .why-us .reason {
+        padding: 16px 30px;
+    }
+
+    .step + .step:before {
+        top: -150px;
+        left: 50%;
+        transform: translate(-50%, 0%) rotate(90deg);
+    }
+
+    .filter {
+        flex-direction: column;
+    }
+
+    .filter>div {
+        padding: 0 20px;
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+@media  screen and (max-width: 860px) {
+    .map {
+        margin-top: 24px;
+    }
+
+    .search-filter {
+        flex-direction: column;
+        justify-content: center;
+        gap: 12px;
+        padding: 0;
+    }
+
+    .search-filter .search form {
+        width: 100%;
+    }
+
+    .filter {
+        gap: 12px;
+        justify-content: space-between;
+    }
+}
