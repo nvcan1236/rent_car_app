@@ -31,7 +31,7 @@ class Car(db.Model):
     images = Column(String(800), default='')
     thumbnail = Column(String(200), default='')
     price = Column(Double, default=0)
-    # colors = Column(ARRAY(Enum(Type)))
+    colors = Column(String(100))
     # colors = relationship('Color', backref='car', lazy=True)
 
 

@@ -1,5 +1,5 @@
 @import url('https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css');
-
+@import url('https://cdn-uicons.flaticon.com/2.1.0/uicons-thin-rounded/css/uicons-thin-rounded.css');
 :root {
     --white: #e5e8e3;
     --black: #07140f;
@@ -97,6 +97,7 @@ button {
 .btn {
     border: none;
     min-width: 100px;
+    height: 40px;
     text-decoration: none;
     background-color: var(--white);
     color: var(--text-color);
@@ -144,6 +145,11 @@ button {
     visibility: hidden;
     opacity: 0;
 }
+
+.row {
+    align-items: stretch;
+}
+
 
 .fade-loading {
     /*width: 30px;*/

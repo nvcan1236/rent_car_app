@@ -14,11 +14,17 @@
     font-weight: 700;
 }
 
+header .logo {
+    width: 40px;
+    /*height: 40px;*/
+}
+
 .navbar-brand {
     color: var(--red);
     font-size: 20px;
     font-weight: 700;
 }
+
 .navbar.fixed-no-change .nav-link,
 .navbar.fixed-no-change .navbar-brand,
 .navbar.fixed .nav-link,
@@ -32,7 +38,7 @@
 }
 
 .welcome-text {
-    width:100%;
+    width: 100%;
     background-image: linear-gradient(to right, var(--black) 52%, transparent);
     color: var(--white);
     position: relative;
@@ -122,7 +128,7 @@
 
 .car-list .car-wrapper {
     border-radius: 6px;
-    background-color:#fdfdfd;
+    background-color: #fdfdfd;
     overflow: hidden;
     box-shadow: 0 0 10px 4px #ddd;
     transition: all 0.3s ease;
@@ -152,6 +158,10 @@
     font-weight: 600;
     display: block;
     margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
 }
 
 .car-info .label {
@@ -181,6 +191,7 @@
     position: relative;
     padding: 16px;
 }
+
 .step + .step:before {
     position: absolute;
     content: '';
@@ -192,6 +203,7 @@
     background-size: contain;
     background-repeat: no-repeat;
 }
+
 .day-advise {
 }
 
@@ -220,6 +232,7 @@
     width: 40px;
     height: 40px;
 }
+
 /*foooter*/
 footer {
     margin-top: 80px;
@@ -274,7 +287,7 @@ footer {
     font-weight: 600;
 }
 
-.filter>div {
+.filter > div {
     display: flex;
     align-items: center;
 }
@@ -284,7 +297,10 @@ footer {
     gap: 12px;
 }
 
-
+.cate-name {
+    margin-top: 40px;
+    text-transform: uppercase;
+}
 
 .dropdown {
     position: relative;
@@ -294,6 +310,9 @@ footer {
     border: 1px solid var(--red);
     padding: 8px 16px;
     border-radius: 6px;
+    max-width: 240px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .dropdown-select span {
@@ -317,6 +336,106 @@ footer {
     transition: all ease 0.3s;
 }
 
+.dropdown-item a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
 .dropdown-item:hover {
     background-color: #ccc;
+}
+
+#modal.show {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: all ease 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+#modal {
+    display: none;
+}
+
+.modal-container {
+    background-color: var(--white);
+    width: 80%;
+    border-radius: 6px;
+    padding: 40px;
+    align-items: stretch;
+}
+
+.car-detail .car-info {
+    display: flex;
+    flex-direction: column;
+    padding: 0 30px;
+}
+
+.car-container .actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 16px;
+    margin-top: 20px;
+    flex: 1;
+}
+
+.car-container .contact {
+    margin-top: 32px;
+}
+
+.car-detail {
+    align-items: stretch;
+}
+
+.car-detail .car-image {
+    height: auto;
+}
+
+.car-container .close {
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+}
+
+.car-container .car-name {
+    font-size: 32px;
+}
+
+.car-detail .car-image .main {
+    height: 360px;
+    object-fit: cover;
+}
+
+.sub-image-list {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 12px;
+}
+
+.car-detail .sub-image-list img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
+
+.sub-image-list img.active {
+    border: 2px solid var(--red);
+}
+
+.car-container {
+    margin-top: 100px;
+    padding: 0 80px;
+}
+
+.contact a,
+#contact a {
+    font-weight: 600;
+    color: var(--red);
 }

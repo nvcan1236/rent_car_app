@@ -1,4 +1,4 @@
-@media screen and (max-width:600px) {
+@media screen and (max-width: 600px) {
     .welcome-text {
         padding: 250px 16px 0;
         background-image: linear-gradient(to top, var(--black) 60%, transparent);
@@ -18,14 +18,24 @@
         flex-direction: column;
     }
 
-    .filter>div {
+    .filter > div {
         padding: 0 20px;
         width: 100%;
         justify-content: space-between;
     }
+
+    .car-detail .sub-image-list img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+
+    .car-container {
+        padding: 10px;
+    }
 }
 
-@media  screen and (max-width: 860px) {
+@media screen and (max-width: 980px) {
     .map {
         margin-top: 24px;
     }
@@ -44,5 +54,22 @@
     .filter {
         gap: 12px;
         justify-content: space-between;
+    }
+
+    .car-detail .contact {
+        display: none;
+    }
+
+    .car-detail .car-image .main {
+        height: 300px;
+    }
+
+    .car-container {
+        padding: 10px;
+    }
+
+    .car-detail .car-info {
+        padding: 8px;
+        margin-top: 20px;
     }
 }

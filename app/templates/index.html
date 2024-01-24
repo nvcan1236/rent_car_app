@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Vũ car</title>
+
+    <link rel="icon" href="{{ url_for('static', filename='/images/logo.png')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='/images/logo.png')}}" type="image/x-icon">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='/style/base.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='/style/main.css')}}">
@@ -14,7 +18,9 @@
 <header>
     <nav class="navbar navbar-expand-sm fixed-top px-md-5 px-xs-3" id="nav-bar">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/"><strong>Vũ car</strong></a>
+            <a class="navbar-brand" href="/">
+                <strong>Vũ car</strong>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -53,7 +59,7 @@
                     mái và an toàn khi bạn tự lái trên những chuyến hành trình của mình. Với đội ngũ xe đa dạng và được
                     bảo dưỡng định kỳ, chúng tôi tự tin rằng sẽ đáp ứng mọi nhu cầu di chuyển của quý khách. Hãy để
                     chúng tôi trở thành đối tác đáng tin cậy trên hành trình khám phá và trải nghiệm của bạn!</p>
-                <a href="" class="contact-btn"> Liên hệ tư vấn <i class="fi fi-rr-phone-flip icon"></i></a>
+                <a href="tel:0903651568" class="contact-btn"> Liên hệ tư vấn <i class="fi fi-rr-phone-flip icon"></i></a>
             </div>
         </div>
         <div class="welcome-image ">
@@ -101,33 +107,147 @@
     </section>
     <section class="car-list container" id="car-list">
         <h3 class="title text-center ">Bảng giá cho thuê xe</h3>
+        {% if type1 %}
         <div class="row">
-            {% for i in range(6) %}
-            <div class="col-12 col-md-6 col-lg-4 car">
+            <h3 class="px-3 text-center cate-name">{{ type1[0].type.value if type1[0] }}</h3>
+            {% for c in type1 %}
+            <a href="/car-detail?id={{c.id}}" class="col-12 col-md-6 col-lg-4 col-xl-3 car">
                 <div class="car-wrapper">
                     <div class="car-image">
-                        <img src="https://images.unsplash.com/photo-1514316454349-750a7fd3da3a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                             alt="">
+                        <img alt=""
+                             src="{{ c.thumbnail or 'https://images.unsplash.com/photo-1514316454349-750a7fd3da3a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}">
                     </div>
                     <div class="car-info">
-                        <strong class="car-name">Attrage 2019 AT </strong>
-                        <div class=""><span class="label">Màu sắc: </span>Đỏ</div>
-                        <div><span class="label">Loại xe: </span>Xe 4 chổ</div>
-                        <div><span class="label">Hộp số: </span>Tự động</div>
+                        <strong class="car-name">{{ c.name }}</strong>
+                        <div class=""><span class="label">Màu sắc: </span>{{ c.colors}}</div>
+                        <div><span class="label">Số chổ ngồi: </span>{{ c.seat_num.value }}</div>
+                        <div><span class="label">Hộp số: </span>{{ c.engine.value }}</div>
                         <div class="action">
-                            <span><span class="car-price">600.000đ</span>/ngày</span>
-                            <button class="btn btn--primary book-btn">Đặt xe</button>
+                            <span>
+                                {% if c.price > 0 %}
+                                <span class="car-price">{{c.price|int}}đ</span>/ngày
+                                {% else %}
+                                <span class="car-price">Liên hệ</span>
+                                {% endif %}
+                            </span>
+                            <a href="tel:0903651568" class="btn btn--primary book-btn">Đặt xe</a>
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
             {% endfor %}
+            <div class="text-center">
+                <a href='/car-list?type=1' class="btn secondary">Xem thêm</a>
+            </div>
+        </div>
+        {% endif %}
 
+        {% if type2 %}
+        <div class="row">
+            <h3 class="px-3 text-center cate-name">{{ type2[0].type.value if type2[0] }}</h3>
+            {% for c in type2 %}
+            <a href="/car-detail?id={{c.id}}" class="col-12 col-md-6 col-lg-4 col-xl-3 car">
+                <div class="car-wrapper">
+                    <div class="car-image">
+                        <img alt=""
+                             src="{{ c.thumbnail or 'https://images.unsplash.com/photo-1514316454349-750a7fd3da3a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}">
+                    </div>
+                    <div class="car-info">
+                        <strong class="car-name">{{ c.name }}</strong>
+                        <div class=""><span class="label">Màu sắc: </span>{{ c.colors}}</div>
+                        <div><span class="label">Số chổ ngồi: </span>{{ c.seat_num.value }}</div>
+                        <div><span class="label">Hộp số: </span>{{ c.engine.value }}</div>
+                        <div class="action">
+                            <span>
+                                {% if c.price > 0 %}
+                                <span class="car-price">{{c.price|int}}đ</span>/ngày
+                                {% else %}
+                                <span class="car-price">Liên hệ</span>
+                                {% endif %}
+                            </span>
+                            <a href="tel:0903651568" class="btn btn--primary book-btn">Đặt xe</a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+            <div class="text-center">
+                <a href='/car-list?type=2' class="btn secondary">Xem thêm</a>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if type3 %}
+        <div class="row">
+            <h3 class="px-3 text-center cate-name">{{ type3[0].type.value if type3[0] }}</h3>
+            {% for c in type3 %}
+            <a href="/car-detail?id={{c.id}}" class="col-12 col-md-6 col-lg-4 col-xl-3 car">
+                <div class="car-wrapper">
+                    <div class="car-image">
+                        <img alt=""
+                             src="{{ c.thumbnail or 'https://images.unsplash.com/photo-1514316454349-750a7fd3da3a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}">
+                    </div>
+                    <div class="car-info">
+                        <strong class="car-name">{{ c.name }}</strong>
+                        <div class=""><span class="label">Màu sắc: </span>{{ c.colors}}</div>
+                        <div><span class="label">Số chổ ngồi: </span>{{ c.seat_num.value }}</div>
+                        <div><span class="label">Hộp số: </span>{{ c.engine.value }}</div>
+                        <div class="action">
+                                <span>
+                                    {% if c.price > 0 %}
+                                    <span class="car-price">{{c.price|int}}đ</span>/ngày
+                                    {% else %}
+                                    <span class="car-price">Liên hệ</span>
+                                    {% endif %}
+                                </span>
+                            <a href="tel:0903651568" class="btn btn--primary book-btn">Đặt xe</a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+            <div class="text-center">
+                <a href='/car-list?type=3' class="btn secondary">Xem thêm</a>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if type4 %}
+        <div class="row">
+            <h3 class="px-3 text-center cate-name">{{ type4[0].type.value if type4[0] }}</h3>
+            {% for c in type4 %}
+            <a href="/car-detail?id={{c.id}}" class="col-12 col-md-6 col-lg-4 col-xl-3 car">
+                <div class="car-wrapper">
+                    <div class="car-image">
+                        <img alt=""
+                             src="{{ c.thumbnail or 'https://images.unsplash.com/photo-1514316454349-750a7fd3da3a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}">
+                    </div>
+                    <div class="car-info">
+                        <strong class="car-name">{{ c.name }}</strong>
+                        <div class=""><span class="label">Màu sắc: </span>{{ c.colors}}</div>
+                        <div><span class="label">Số chổ ngồi: </span>{{ c.seat_num.value }}</div>
+                        <div><span class="label">Hộp số: </span>{{ c.engine.value }}</div>
+                        <div class="action">
+                                    <span>
+                                        {% if c.price > 0 %}
+                                        <span class="car-price">{{c.price|int}}đ</span>/ngày
+                                        {% else %}
+                                        <span class="car-price">Liên hệ</span>
+                                        {% endif %}
+                                    </span>
+                            <a href="tel:0903651568" class="btn btn--primary book-btn">Đặt xe</a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
         </div>
         <div class="text-center">
-            <button class="btn secondary">Xem tất cả</button>
+            <a href='/car-list?type=4' class="btn secondary">Xem thêm</a>
         </div>
+        {% endif %}
     </section>
+
     <section class="container procedure" id="procedure">
         <h3 class="title text-center ">QUY TRÌNH THUÊ XE Ô TÔ TỰ LÁI </h3>
         <div class="row ">
@@ -169,7 +289,7 @@
 
                         <li>
                             Tính một ngày thuê xe là <strong>7h00</strong> sáng đến <strong>22h00</strong> đêm. Hoặc
-                            nhận sớm từ <strong>22h00 đêm hôm trước </strong>đến  <strong>22h00 đêm hôm nay</strong>
+                            nhận sớm từ <strong>22h00 đêm hôm trước </strong>đến <strong>22h00 đêm hôm nay</strong>
                         </li>
                         <li>
                             Tính nửa ngày : <strong>7h – 13h và 15h – 22h.</strong>
@@ -243,7 +363,6 @@
             </div>
         </div>
     </section>
-
     <section class="container" id="contact">
         <h3 class="title text-center">Liên hệ</h3>
         <div class="row">
@@ -251,10 +370,10 @@
                 <h4>Công ty TNHH Dịch vụ An Hoà </h4>
                 <div><span>Địa chỉ: </span> 34 Đ. Vũ Trọng Hoàng, Hoà An, Cẩm Lệ, Đà Nẵng, Việt Nam</div>
                 <div><span>Số điện thoại: </span>
-                    <a href="" class="phone-number">0903651568</a>
-                    <a href="" class="phone-number">0396516516</a>
+                    <a href="tel:0903651568" class="phone-number">0903651568</a> -
+                    <a href="tel:0396516516" class="phone-number">0396516516</a>
                 </div>
-                <div><span>Email: </span> <a href="">chothuexeotovuland@gmail.com</a></div>
+                <div><span>Email: </span> <a href="mailto:chothuexeotovuland@gmail.com">chothuexeotovuland@gmail.com</a></div>
                 <div><span>Facebook: </span> <a
                         href="https://www.facebook.com/profile.php?id=100094075363295&mibextid=ZbWKwL">Cho thuê xe tự
                     lái giá rẻ đà nẵng </a></div>
@@ -267,21 +386,15 @@
             </div>
         </div>
     </section>
-
     <div class="quick-contact">
-        <a href="" class="phone fade-loading"><img src="{{ url_for( 'static', filename='images/whatsapp.png')}}" alt=""></a>
-        <a href="" class="zalo fade-loading"><img src="{{ url_for( 'static', filename='images/zalo.png')}}" alt=""></a>
-        <a href="" class="facebook fade-loading"><img src="{{ url_for( 'static', filename='images/facebook.png')}}"
+        <a href="tel:0903651568" class="phone fade-loading"><img src="{{ url_for( 'static', filename='images/whatsapp.png')}}" alt=""></a>
+        <a href="https://zalo.me/0903651568" class="zalo fade-loading"><img src="{{ url_for( 'static', filename='images/zalo.png')}}" alt=""></a>
+        <a href="https://www.facebook.com/profile.php?id=100094075363295&mibextid=ZbWKwL" class="facebook fade-loading"><img src="{{ url_for( 'static', filename='images/facebook.png')}}"
                                                       alt=""></a>
     </div>
 
-
 </main>
-<div id="modal">
-    <div class="modal-container">
-        
-    </div>
-</div>
+
 <footer class="py-3">
     <div class="text-center">Công ty trách nhiệm hữu hạn Dịch vụ Vũ car</div>
     <div class="text-center">2024 © All rights reserved</div>
