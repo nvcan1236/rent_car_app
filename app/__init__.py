@@ -10,7 +10,9 @@ import sqlite3
 app = Flask(__name__)
 app.secret_key = 'DUKFHAKDGHNAK,DFHLDSKIFHALSK,JGDN ,KDFAJBN'
 # app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///site.db'
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE_URL')
+# database_url = os.environ.get('DATABASE_URL')
+app.config[
+    "SQLALCHEMY_DATABASE_URI"] = 'postgresql://postgres:bec5EcGCg1362bce*bDE5fcGe33g1ABF@roundhouse.proxy.rlwy.net:44047/railway'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 # login = LoginManager(app=app)
 db = SQLAlchemy(app=app)

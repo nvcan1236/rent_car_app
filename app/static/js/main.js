@@ -41,6 +41,11 @@ function setMain(id) {
     productSubImages[id].classList.add('active')
 
 }
+
+function showDetail(id) {
+    window.location.href += `/car-detail?id=${id}`
+}
+
 //
 // modal = document.getElementById('modal')
 //

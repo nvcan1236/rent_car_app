@@ -7,7 +7,6 @@ from flask import session
 class CarView(ModelView):
     column_list = ['name', 'seat_num', 'type', 'engine', 'price']
 
-
     def is_accessible(self):
         return session.get('login')
 
