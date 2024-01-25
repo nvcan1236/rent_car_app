@@ -169,10 +169,9 @@ header .logo {
     margin-right: 8px;
 }
 
-.car .car-price {
+.car-info .car-price {
     font-size: 18px;
     font-weight: 600;
-
 }
 
 .car .action {

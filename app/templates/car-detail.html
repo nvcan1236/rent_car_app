@@ -72,9 +72,9 @@
                 <div><span class="label">Hộp số: </span>{{ car.engine.value }}</div>
                 <div>
                     {% if car.price > 0 %}
-                    <span class="car-price">{{car.price|int}}đ</span>/ngày
+                    <span class="car-price">{{ "{:,.0f}".format( car.price) }}đ</span>/ngày
                     {% else %}
-                    <span class="car-price">Liên hệ</span>
+                    <span class="car-price"><span class="label">Giá thuê:</span> Liên hệ</span>
                     {% endif %}
                 </div>
 
@@ -88,9 +88,8 @@
                     <div><span>Email: </span> <a
                             href="mailto:chothuexeotovuland@gmail.com">chothuexeotovuland@gmail.com</a></div>
                     <div><span>Facebook: </span> <a
-                            href="https://www.facebook.com/profile.php?id=100094075363295&mibextid=ZbWKwL">Cho thuê xe
-                        tự
-                        lái giá rẻ đà nẵng </a></div>
+                            href="https://www.facebook.com/profile.php?id=100094075363295&mibextid=ZbWKwL">Cho thuê xe ô
+                        tô tự lái Đà Nẵng VŨ CAR</a></div>
                 </div>
 
                 <div class="actions">
@@ -238,9 +237,7 @@
                 <div>
                     <span>Facebook: </span>
                     <a
-                            href="https://www.facebook.com/profile.php?id=100094075363295&mibextid=ZbWKwL">Cho thuê xe
-                        tự
-                        lái giá rẻ đà nẵng </a>
+                            href="https://www.facebook.com/profile.php?id=100094075363295&mibextid=ZbWKwL">Cho thuê xe ô tô tự lái Đà Nẵng VŨ CAR</a>
                 </div>
 
             </div>
