@@ -43,7 +43,7 @@ function setMain(id) {
 }
 
 function showDetail(id) {
-    window.location.href += `/car-detail?id=${id}`
+    window.location.href = `/car-detail?id=${id}`
 }
 
 //
