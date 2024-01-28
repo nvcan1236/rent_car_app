@@ -1,7 +1,9 @@
 @import url('https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css');
 @import url('https://cdn-uicons.flaticon.com/2.1.0/uicons-thin-rounded/css/uicons-thin-rounded.css');
+@import url('https://cdn-uicons.flaticon.com/2.1.0/uicons-solid-rounded/css/uicons-solid-rounded.css');
+
 :root {
-    --white: #e5e8e3;
+    --white: #f5f6f6;
     --black: #07140f;
     --text-color: #333;
     --red: #a01b09;
@@ -48,7 +50,7 @@ button {
 
     }
     to {
-        opacity: 1;
+        opacity: 0.6;
     }
 }
 

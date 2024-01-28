@@ -14,7 +14,7 @@ class Type(MyEnum):
     SEDAN_4_CHO = 'Sedan 4 chổ'
     SUV_CUV_5_CHO = 'SUV & CUV 5 chổ'
     SUV_MPV_7_CHO = 'SUV & MPV 7 chổ'
-    MERCEDES = 'Mercedes'
+    MERCEDES = 'Dòng xe sang'
 
 
 class Engine(MyEnum):

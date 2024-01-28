@@ -37,6 +37,25 @@ header .logo {
     height: min(100vh, 800px);
 }
 
+.scroll-down {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    color: #fff;
+    text-align: center;
+    line-height: 1;
+    font-size: 14px;
+    opacity: 0.6;
+    animation: fadein 1s alternate infinite linear;
+}
+
+.scroll-down i {
+    font-size: 20px;
+}
+
+
 .welcome-text {
     width: 100%;
     background-image: linear-gradient(to right, var(--black) 52%, transparent);
@@ -44,6 +63,7 @@ header .logo {
     position: relative;
     z-index: 1;
     height: 100%;
+    padding: 100px 48px 24px;
 }
 
 .welcome-wrapper {
@@ -140,7 +160,7 @@ header .logo {
 }
 
 .car-image {
-    height: 200px;
+    height: 240px;
 }
 
 .car-image img {
@@ -221,6 +241,7 @@ header .logo {
     gap: 16px;
     transform: translateY(150%);
     transition: all ease 1s;
+    z-index: 3;
 }
 
 .quick-contact.show {
@@ -228,8 +249,8 @@ header .logo {
 }
 
 .quick-contact img {
-    width: 40px;
-    height: 40px;
+    width:50px;
+    height: 50px;
 }
 
 /*foooter*/

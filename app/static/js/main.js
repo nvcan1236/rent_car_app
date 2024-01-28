@@ -6,10 +6,10 @@ window.addEventListener('load', function () {
     document.addEventListener('scroll', function () {
         if (window.pageYOffset > 100) {
             navBar.classList.add('fixed')
-            quickContact.classList.add('show')
+//            quickContact.classList.add('show')
         } else {
             navBar.classList.remove('fixed')
-            quickContact.classList.remove('show')
+//            quickContact.classList.remove('show')
         }
     })
 })
