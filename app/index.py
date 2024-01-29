@@ -24,7 +24,7 @@ def logout():
 def home():
     type1 = Car.query.filter(Car.type.__eq__(Type.SEDAN_4_CHO)).filter(Car.id.in_([5, 8, 10, 11])).all()
     type2 = Car.query.filter(Car.type.__eq__(Type.SUV_CUV_5_CHO)).filter(Car.id.in_([12, 13, 15, 35])).all()
-    type3 = Car.query.filter(Car.type.__eq__(Type.SUV_MPV_7_CHO)).filter(Car.id.in_([17, 20, 27, 28])).all()
+    type3 = Car.query.filter(Car.type.__eq__(Type.SUV_MPV_7_CHO)).filter(Car.id.in_([34, 20, 27, 28])).all()
     type4 = Car.query.filter(Car.type.__eq__(Type.MERCEDES)).filter(Car.id.in_([29, 32, 36, 37])).all()
     car_id = request.args.get('car-id')
     if car_id:
