@@ -12,18 +12,18 @@ window.addEventListener('load', function () {
         'https://res.cloudinary.com/dhwzmp1ef/image/upload/v1706510426/%E1%BA%A2nh%20xe/%E1%BA%A2nh%20%C4%91%E1%BA%A7u%20trang/IMG_20240129_004448_fc1upz.jpg',
         'https://res.cloudinary.com/dhwzmp1ef/image/upload/v1706510425/%E1%BA%A2nh%20xe/%E1%BA%A2nh%20%C4%91%E1%BA%A7u%20trang/IMG_20240129_004346_lbayos.jpg'
     ]
-    setInterval(() => {
-        console.log(images[i])
-        console.log(i)
-        welcomeImg.style.backgroundImage = `url(${images[i]})`
-        if (i==5) {
-            i=0;
-        }
-        else {
-            i++;
-        }
-
-    }, 5000)
+    // setInterval(() => {
+    //     console.log(images[i])
+    //     console.log(i)
+    //     welcomeImg.style.backgroundImage = `url(${images[i]})`
+    //     if (i==5) {
+    //         i=0;
+    //     }
+    //     else {
+    //         i++;
+    //     }
+    //
+    // }, 5000)
 
 
     document.addEventListener('scroll', function () {
@@ -82,3 +82,15 @@ function showDetail(id) {
 //     modal.classList.remove('show')
 // }
 
+
+$(document).ready(function () {
+    $('.your-class').slick({
+        arrows: false,
+        dots: true,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 5000,
+    });
+});

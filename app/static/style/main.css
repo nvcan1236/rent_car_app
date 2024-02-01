@@ -4,8 +4,9 @@
     transition: all ease 0.3s;
 }
 
+
 .navbar .nav-link {
-    color: var(--white);
+    color: var(--red);
     font-size: 16px;
 }
 
@@ -14,9 +15,10 @@
     font-weight: 700;
 }
 
+
+
 header .logo {
     width: 40px;
-    /*height: 40px;*/
 }
 
 .navbar-brand {
@@ -34,20 +36,31 @@ header .logo {
 
 .welcome {
     position: relative;
+    display: flex;
     height: min(100vh, 800px);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.welcome:after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('https://res.cloudinary.com/dbd7vfk12/image/upload/v1705937547/%E1%BA%A2nh%20xe/Xe%204c/Madza3%202022/owfb87emq2jajrri8vmg.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
 }
 
 .scroll-down {
     position: absolute;
-    bottom: 20px;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
-    color: #fff;
+    color: #000;
     text-align: center;
     line-height: 1;
     font-size: 14px;
-    opacity: 0.6;
     animation: fadein 1s alternate infinite linear;
 }
 
@@ -57,37 +70,47 @@ header .logo {
 
 
 .welcome-text {
-    width: 100%;
-    background-image: linear-gradient(to right, rgba(0,0,0,0.7) 52%, transparent);
-    color: var(--white);
-    position: relative;
-    z-index: 1;
-    height: 100%;
+    /*width: 100%;*/
+    /*background-image: linear-gradient(to right, rgba(0,0,0,0.7) 52%, transparent);*/
+    /*color: var(--white);*/
+    /*position: relative;*/
+    /*z-index: 1;*/
+    /*height: 100%;*/
     padding: 100px 48px 24px;
+    width: 50%;
 }
 
 .welcome-wrapper {
     height: 100%;
     display: flex;
     flex-direction: column;
-    width: min(700px, 100%);
+    /*width: min(700px, 100%);*/
     justify-content: space-between;
 }
 
 .welcome-image {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    transition: all ease 1s;
-    background-image: url('https://res.cloudinary.com/dhwzmp1ef/image/upload/v1706510426/%E1%BA%A2nh%20xe/%E1%BA%A2nh%20%C4%91%E1%BA%A7u%20trang/IMG_20240129_004742_mvqicz.jpg');
-    background-size: cover;
-    background-position: center;
+    /*position: absolute;*/
+    /*inset: 0;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /*transition: all ease 1s;*/
+    /*background-image: url('https://res.cloudinary.com/dhwzmp1ef/image/upload/v1706510426/%E1%BA%A2nh%20xe/%E1%BA%A2nh%20%C4%91%E1%BA%A7u%20trang/IMG_20240129_004742_mvqicz.jpg');*/
+    /*background-size: cover;*/
+    /*background-position: center;*/
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .welcome-image img {
-    transition: all ease 0.3s;
-    display: none;
+    object-fit: cover;
+}
+
+.welcome-image .slider {
+    width: 90%;
+    border: 20px solid var(--white);
+    box-shadow: 16px 16px 0 0 var(--red), -16px -16px 0 0 var(--red);
 }
 
 .welcome h2 {
@@ -104,24 +127,19 @@ header .logo {
 }
 
 .welcome .contact-btn {
-    max-width: 200px;
+    width: 210px;
     padding: 12px 26px;
     border-radius: 999px;
     background-color: var(--red);
     color: var(--white);
-    margin-bottom: 24px;
     font-weight: 600;
     font-size: 18px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 8px;
 }
 
-.welcome-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
 
 /*why chose us*/
 .why-us {
@@ -206,12 +224,13 @@ header .logo {
 .car .action {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: end;
 }
 
 .car .book-btn {
-    padding: 8px 32px;
+    padding: 6px 24px;
     border-radius: 6px;
+    height: unset;
 }
 
 /*procedure*/

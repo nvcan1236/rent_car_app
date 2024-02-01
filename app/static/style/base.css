@@ -1,6 +1,7 @@
 @import url('https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css');
 @import url('https://cdn-uicons.flaticon.com/2.1.0/uicons-thin-rounded/css/uicons-thin-rounded.css');
 @import url('https://cdn-uicons.flaticon.com/2.1.0/uicons-solid-rounded/css/uicons-solid-rounded.css');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
 
 :root {
     --white: #f5f6f6;
@@ -23,6 +24,7 @@ html {
 body {
     font-size: 16px;
     background-color: var(--white);
+    font-family: 'Inter', sans-serif;
 }
 
 a {
