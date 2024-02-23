@@ -1,0 +1,7 @@
+version: '3.11'
+services:
+  rentcar:
+    build:
+      context: ./
+    ports:
+      - "5005:5000"
